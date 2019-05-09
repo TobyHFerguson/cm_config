@@ -1,0 +1,81 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "westus2"
+        },
+        "storageAccountSuffix": {
+            "value": "cmapi"
+        },
+        "workerStorageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "vmSize": {
+            "value": "Standard_DS13_v2"
+        },
+        "dnsNamePrefix": {
+            "value": "cm-api"
+        },
+        "virtualNetworkName": {
+            "value": "clouderaVnet"
+        },
+        "subnetName": {
+            "value": "clouderasubnet"
+        },
+        "vnetNewOrExisting": {
+            "value": "new"
+        },
+        "virtualNetworkRGName": {
+            "value": "toby-cm-api2"
+        },
+        "addressPrefixes": {
+            "value": "10.10.0.0/16"
+        },
+        "subnetPrefix": {
+            "value": "10.10.0.0/16"
+        },
+        "masterNodeIPAddress": {
+            "value": "10.10.0.4"
+        },
+        "adminUsername": {
+            "value": "cloudera"
+        },
+        "adminPassword": {
+            "value": "Cloudera_123"
+        },
+        "tshirtSize": {
+            "value": "Eval"
+        },
+        "numberOfDataNodes": {
+            "value": "3"
+        },
+        "cmUserName": {
+            "value": "cloudera"
+        },
+        "cmPassword": {
+            "value": "Cloudera_123"
+        },
+        "company": {
+            "value": "Cloudera"
+        },
+        "emailAddress": {
+            "value": "toby@cloudera.com"
+        },
+        "businessPhone": {
+            "value": "4083869343"
+        },
+        "firstName": {
+            "value": "toby"
+        },
+        "lastName": {
+            "value": "ferguson"
+        },
+        "jobRole": {
+            "value": "Administrator"
+        },
+        "jobFunction": {
+            "value": "Analytics / Business Intelligence"
+        }
+    }
+}

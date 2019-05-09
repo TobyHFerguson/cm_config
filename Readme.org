@@ -1,0 +1,10 @@
+* Cm service install
+Add the KUDU-1 service to the cluster
+* Build
+#+BEGIN_SRC 
+docker build -t mypy -f Dockerfile-5.16 .
+#+END_SRC
+* Run
+#+BEGIN_SRC 
+docker run --rm -i -t -v ${PWD}:${PWD} -w ${PWD} mypy python script-5.16.py
+#+END_SRC

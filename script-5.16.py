@@ -1,5 +1,5 @@
 from cm_api.api_client import ApiResource
-cm_host = "cm-api-mn0.westus2.cloudapp.azure.com"
+cm_host = "cm-api5-mn0.westus2.cloudapp.azure.com"
 user = "cloudera"
 password = "Cloudera_123"
 api = ApiResource(cm_host, username=user, password=password)
@@ -17,16 +17,32 @@ def print_clusters(api):
 
 def print_services(api):
     for c in api.get_all_clusters():
+        print "| service name | displayname | type |"
+        print "|-"
         for s in c.get_all_services():
-            print "%s - %s  - %s" % (s.name, s.displayName, s.type)
+
+            print "|%s |  %s  | %s |" % (s.name, s.displayName, s.type)
+        print "|-"
 
 
-def print_roles(api):
+def print_roles_for_service_type(api, stype):
     for c in api.get_all_clusters():
         for s in c.get_all_services():
-            if s.type == "KUDU":
+            if s.type == stype:
                 for r in s.get_all_roles():
+                    print
+                    print r
                     print vars(r)
+
+
+def print_role_configs_for_service_type(api, stype):
+    for c in api.get_all_clusters():
+        for s in c.get_all_services():
+            if s.type == stype:
+                for r in s.get_all_roles():
+                    print
+                    print r
+                    print r.get_config()
 
 
 def print_kudu_configs(api):
@@ -40,10 +56,10 @@ def print_kudu_configs(api):
                     print(config)
 
 
-def print_kudu_role_group_configs(api):
+def print_service_type_role_group_configs(api, stype):
     for c in api.get_all_clusters():
         for s in c.get_all_services():
-            if s.type == "KUDU":
+            if s.type == stype:
                 for rcg in s.get_all_role_config_groups():
                     print "%s - %s" % (rcg.name, rcg.displayName)
                     for name, config in rcg.get_config(view='full').items():
@@ -112,13 +128,61 @@ def start_service(api, cluster, service):
     api.get_cluster(cluster).get_service(service).start()
 
 
-print_services(api)
-delete_service(api, "KUDU-1")
-add_kudu_service(api)
-create_kudu_roles(api)
-update_kudu_role_group_configs(api)
-start_service(api, "cm-api", "KUDU-1")
-# print_role_types(api, "cm-api", "kudu")
-print_roles(api)
-print_kudu_configs(api)
-print_kudu_role_group_configs(api)
+def print_service_types(api):
+    print
+    print "Service Types"
+    for t in api.get_all_clusters()[0].get_service_types():
+        print t
+
+
+def print_service_config_by_service_type(api, stype):
+    print
+    print "Service configs by service type"
+    for s in api.get_all_clusters()[0].get_all_services(view='full'):
+        if s.type == stype:
+            print "name: %s displayName: %s" % (s.name, s.displayName)
+            config = s.get_config()[0]
+            print config
+
+
+def print_impala_resource_configs(api, stype):
+    for s in api.get_all_clusters()[0].get_all_services(view='full'):
+        if s.type == stype:
+            print "name: %s displayName: %s" % (s.name, s.displayName)
+            config = s.get_config()[0]
+            print config
+
+
+for service in api.get_all_clusters()[0].get_all_services():
+    print "** Service name:%s type: %s displayName: %s" % (service.name, service.type, service.displayName)
+    config = service.get_config()
+    print
+    print "Service Config: %s" % str(config)
+    print
+    for rcg in service.get_all_role_config_groups():
+        print "rcg name: %s rcg display name: %s" % (rcg.name, rcg.displayName)
+        config = rcg.get_config()
+        print
+        print "rcg config: %s" % str(config)
+    for role in service.get_all_roles():
+        print
+        print "role name: %s role type: %s" % (role.name, role.type)
+        print
+        print "role config: %s" % (role.get_config())
+
+
+# print_services(api)
+# print_service_types(api)
+# for service in get_services_by_type(get_service_types):
+#     print
+# delete_service(api, "KUDU-1")
+# add_kudu_service(api)
+# create_kudu_roles(api)
+# update_kudu_role_group_configs(api)
+# start_service(api, "cm-api", "KUDU-1")
+# print_role_types(api, "cm-api", "nifitoolkitca")
+# print_roles(api)
+# print_kudu_configs(api)
+# print_service_type_role_group_configs(api, "IMPALA")
+# print_service_config_by_service_type(api, "IMPALA")
+# print_role_configs_for_service_type(api, "IMPALA")

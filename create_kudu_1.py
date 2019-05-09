@@ -40,8 +40,19 @@ def update_kudu_role_group_configs(cluster):
                                        "fs_data_dirs": "/data/tserver"})
 
 
-def start_service(cluster, service):
-    cluster.get_service(service).start()
+def start_service(cluster, service_name):
+    cmd = cluster.get_service(service_name).start()
+    print "Waiting for %s to stop" % (service_name)
+    cmd.wait()
+
+
+def stop_service(cluster, service_name):
+    try:
+        cmd = cluster.get_service(service_name).stop()
+        print "Waiting for %s to start" % (service_name)
+        cmd.wait()
+    except Exception:
+        pass
 
 
 service_name = "KUDU-1"
@@ -50,6 +61,12 @@ service_name = "KUDU-1"
 def main(cm_host, user, password):
     api = ApiResource(cm_host, username=user, password=password)
     cluster = api.get_all_clusters()[0]
+    stop_service(cluster, service_name)
+    try:
+        print "deleting existing %s" % service_name
+        cluster.delete_service(service_name)
+    except Exception:
+        pass
     add_kudu_service(cluster, service_name)
     create_kudu_roles(cluster, api.get_all_hosts())
     update_kudu_role_group_configs(cluster)

@@ -1,16 +1,32 @@
-* Cm service install
-Add the KUDU-1 service to the cluster
+* CM configuration
+This system is meant to help configure a cluster for the EDH lab we're doing with NiFi etc.
+
+It is assumed a cluster has been created which needs configuring.
+
+The hostnames have the format PREFIX-dn0...... where -dn0.... can be -dn0, -dn1, -dn2, -mn0, followed by anything else.
+
+There are some bash scripts in bin/ which will connect via ssh with a password
+
+There is a dockerized system (I use this to avoid python conflicts). Building it and running it by hand are described later
+
+* Simple use
+If you've been given the cluster, and you have the cluster prefix, the cluster's CM hostname, the username and password then you need to execute the following:
+
+#+BEGIN_SRC 
+bin/new_cluster.sh PREFIX username
+bin/configure_cluster.sh CM_URL username password
+#+END_SRC
+
+=new_cluster.sh= will require you to provide a password (several times!) 
+=configure_cluster.sh= will run a docker image and configure the cluster at the given CM URL
+
+#+BEGIN_EXAMPLE
+bin/new_cluster.sh cm-api cloudera
+bin/configure_clouster.sh http://cm-api-mn0.ukwest.azure.com cloudera Cloudera_123
+#+END_EXAMPLE
+
 * Build
+If you want to build the docker image (you don't have to! Its on the web so you don't need this step)
 #+BEGIN_SRC 
-docker build -t mypy -f Dockerfile-5.16 .
-#+END_SRC
-* Run
-** create the KUDU-1 service
-Idempotent
-#+BEGIN_SRC 
-docker run --rm -i -t -v ${PWD}:${PWD} -w ${PWD} mypy python create_kudu_1.py cm-api-mn0.westus2.cloudapp.azure.com cloudera Cloudera_123
-#+END_SRC
-** Basic script
-#+BEGIN_SRC 
-docker run --rm -i -t -v ${PWD}:${PWD} -w ${PWD} mypy python script-5.16.py
+docker build -t tobyhferguson/cm_config .
 #+END_SRC

@@ -1,2 +1,3 @@
+# A temporary system for executing specific scripts
 URL=http://cm-api6-mn0.westus2.cloudapp.azure.com
 docker run --rm -i -t -v ${PWD}:${PWD} -w ${PWD} mypy python ${1:?"No python script provided"} ${URL#*://} cloudera Cloudera_123

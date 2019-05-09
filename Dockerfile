@@ -1,4 +1,5 @@
-FROM python:rc-alpine
+FROM python:2-alpine
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-CMD ["/bin/sh"]
+COPY python/* /
+CMD ["bin/sh"]

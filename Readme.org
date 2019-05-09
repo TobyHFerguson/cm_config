@@ -5,6 +5,12 @@ Add the KUDU-1 service to the cluster
 docker build -t mypy -f Dockerfile-5.16 .
 #+END_SRC
 * Run
+** create the KUDU-1 service
+This is not idempotent - the KUDU-1 service must be stopped and deleted before this script can run.
+#+BEGIN_SRC 
+docker run --rm -i -t -v ${PWD}:${PWD} -w ${PWD} mypy python create_kudu_1.py cm-api-mn0.westus2.cloudapp.azure.com cloudera Cloudera_123
+#+END_SRC
+** Basic script
 #+BEGIN_SRC 
 docker run --rm -i -t -v ${PWD}:${PWD} -w ${PWD} mypy python script-5.16.py
 #+END_SRC

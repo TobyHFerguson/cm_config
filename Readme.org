@@ -24,7 +24,7 @@ docker --rm -i -t tobyhferguson/cm_config CM_URL username password
 
 #+BEGIN_EXAMPLE
 bin/new_cluster.sh http://cl64863-mn0.eastus2.cloudapp.azure.com:7180/ cloudera
-docker --rm -i -t tobyhferguson/cm_config http://cl64863-mn0.eastus2.cloudapp.azure.com:7180/ cloudera Cloudera_123
+docker run --rm -i -t tobyhferguson/cm_config http://cl64863-mn0.eastus2.cloudapp.azure.com:7180/ cloudera Cloudera_123
 #+END_EXAMPLE
 
 * Build

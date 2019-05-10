@@ -1,3 +1,8 @@
 # A temporary system for executing specific scripts
-URL=cl64863-mn0.eastus2.cloudapp.azure.com
-docker run --rm -i -t -v ${PWD}:${PWD} -w ${PWD} tobyhferguson/cm_config python ${1:?"No python script provided"} ${URL#*://} cloudera Cloudera_123
+URL=http://cm-api7-mn0.westus2.cloudapp.azure.com:7180/cmf/home
+IMAGE=tobyhferguson/cm_config
+IMAGE=mycm
+
+HOST=$(echo  ${URL#*://} | sed -n 's/\([^:][^:]*\).*/\1/p')
+
+docker run --rm -i -t -v ${PWD}:${PWD} -w ${PWD} ${IMAGE:?} python ${1:?"No python script provided"} ${HOST:?} cloudera Cloudera_123

@@ -35,10 +35,22 @@ def create_solr(api):
     print "Service %s has started" % service_name
 
 
+def configure_hue_for_solr(api):
+    cluster = api.get_all_clusters()[0]
+    service_name = "hue"
+
+    hue_service = cluster.get_service(service_name)
+    hue_service.update_config({'solr_service': 'solr'})
+    print "hue configured for solr. Restarting stale services and redeploying stale configs"
+    cluster.restart(restart_only_stale_services=True,
+                    redeploy_client_configuration=True).wait()
+
+
 def main(cm_host, user, password):
     api = ApiResource(cm_host, username=user, password=password)
 
     create_solr(api)
+    configure_hue_for_solr(api)
 
 
 def usage(name):

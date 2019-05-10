@@ -2230,3 +2230,1367 @@ role config: {}
 role name: hive-GATEWAY-797620319ea8878235468902c99d4e50 role type: GATEWAY
 
 role config: {}
+* After adding solr service
+** Service name:oozie type: OOZIE displayName: oozie
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'hive_service': u'hive', u'mapreduce_yarn_service': u'yarn'}, {})
+
+rcg name: oozie-OOZIE_SERVER-BASE rcg display name: Oozie Server Default Group
+
+rcg config: {u'oozie_log_dir': u'/log/cloudera/oozie', u'oozie_data_dir': u'/log/cloudera/lib/oozie/data'}
+
+role name: oozie-OOZIE_SERVER-cca0183624229cf91fe6791fce5e0926 role type: OOZIE_SERVER
+
+role config: {u'oozie_log_dir': u'/log/cloudera/oozie', u'oozie_data_dir': u'/log/cloudera/lib/oozie/data'}
+** Service name:impala type: IMPALA displayName: impala
+
+Service Config: ({u'impala_cmd_args_safety_valve': u'-scratch_dirs=/data0/impala/scratch,/data1/impala/scratch,/data2/impala/scratch,/data3/impala/scratch,/data4/impala/scratch', u'hdfs_service': u'hdfs', u'hive_service': u'hive', u'kudu_service': u'KUDU-1'}, {})
+
+rcg name: impala-LLAMA-BASE rcg display name: Impala Llama ApplicationMaster Default Group
+
+rcg config: {}
+rcg name: impala-IMPALAD-BASE rcg display name: Impala Daemon Default Group
+
+rcg config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+rcg name: impala-CATALOGSERVER-BASE rcg display name: Impala Catalog Server Default Group
+
+rcg config: {u'log_dir': u'/log/cloudera/catalogd'}
+rcg name: impala-STATESTORE-BASE rcg display name: Impala StateStore Default Group
+
+rcg config: {u'log_dir': u'/log/cloudera/statestore'}
+
+role name: impala-IMPALAD-9cc4ea206a45054739fb00d7993ff4f8 role type: IMPALAD
+
+role config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+
+role name: impala-STATESTORE-cca0183624229cf91fe6791fce5e0926 role type: STATESTORE
+
+role config: {u'log_dir': u'/log/cloudera/statestore'}
+
+role name: impala-IMPALAD-0034f05ed643ec7a315f7c9033c994b0 role type: IMPALAD
+
+role config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+
+role name: impala-IMPALAD-5cee0558afe5fda3e12171fbda253bb7 role type: IMPALAD
+
+role config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+
+role name: impala-CATALOGSERVER-cca0183624229cf91fe6791fce5e0926 role type: CATALOGSERVER
+
+role config: {u'log_dir': u'/log/cloudera/catalogd'}
+** Service name:hue type: HUE displayName: hue
+
+Service Config: ({u'hue_webhdfs': u'hdfs-NAMENODE-cca0183624229cf91fe6791fce5e0926', u'impala_service': u'impala', u'zookeeper_service': u'zookeeper', u'hive_service': u'hive', u'oozie_service': u'oozie'}, {})
+
+rcg name: hue-HUE_SERVER-BASE rcg display name: Hue Server Default Group
+
+rcg config: {u'hue_server_log_dir': u'/log/cloudera/hue'}
+rcg name: hue-KT_RENEWER-BASE rcg display name: Kerberos Ticket Renewer Default Group
+
+rcg config: {u'kt_renewer_log_dir': u'/log/cloudera/hue'}
+rcg name: hue-HUE_LOAD_BALANCER-BASE rcg display name: Load Balancer Default Group
+
+rcg config: {}
+
+role name: hue-HUE_SERVER-cca0183624229cf91fe6791fce5e0926 role type: HUE_SERVER
+
+role config: {u'hue_server_log_dir': u'/log/cloudera/hue', u'secret_key': u'DJPgoTtCbaTopcwLDv79RlV5321RTH'}
+** Service name:nifiregistry type: NIFIREGISTRY displayName: nifiregistry
+
+Service Config: ({u'nifitoolkitca_service': u'nifitoolkitca'}, {})
+
+rcg name: nifiregistry-NIFI_REGISTRY_SERVER-BASE rcg display name: NiFi Registry Default Group
+
+rcg config: {}
+
+role name: nifiregistry role type: NIFI_REGISTRY_SERVER
+
+role config: {}
+** Service name:nifi type: NIFI displayName: nifi
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'nifitoolkitca_service': u'nifitoolkitca'}, {})
+
+rcg name: nifi-NIFI_NODE-BASE rcg display name: NiFi Node Default Group
+
+rcg config: {}
+
+role name: nifi role type: NIFI_NODE
+
+role config: {}
+** Service name:yarn type: YARN displayName: yarn
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'hdfs_service': u'hdfs'}, {})
+
+rcg name: yarn-RESOURCEMANAGER-BASE rcg display name: ResourceManager Default Group
+
+rcg config: {u'resource_manager_java_heapsize': u'2000000000', u'resource_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_scheduler_maximum_allocation_mb': u'2568', u'yarn_scheduler_maximum_allocation_vcores': u'2'}
+rcg name: yarn-NODEMANAGER-BASE rcg display name: NodeManager Default Group
+
+rcg config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+rcg name: yarn-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {u'mapred_submit_replication': u'3'}
+rcg name: yarn-JOBHISTORY-BASE rcg display name: JobHistory Server Default Group
+
+rcg config: {u'mr2_jobhistory_java_heapsize': u'1000000000', u'mr2_jobhistory_log_dir': u'/log/cloudera/hadoop-mapreduce'}
+
+role name: yarn-NODEMANAGER-9cc4ea206a45054739fb00d7993ff4f8 role type: NODEMANAGER
+
+role config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+
+role name: yarn-JOBHISTORY-cca0183624229cf91fe6791fce5e0926 role type: JOBHISTORY
+
+role config: {u'mr2_jobhistory_java_heapsize': u'1000000000', u'mr2_jobhistory_log_dir': u'/log/cloudera/hadoop-mapreduce'}
+
+role name: yarn-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+
+role name: yarn-RESOURCEMANAGER-cca0183624229cf91fe6791fce5e0926 role type: RESOURCEMANAGER
+
+role config: {u'resource_manager_java_heapsize': u'2000000000', u'resource_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_scheduler_maximum_allocation_mb': u'2568', u'yarn_scheduler_maximum_allocation_vcores': u'2'}
+
+role name: yarn-NODEMANAGER-5cee0558afe5fda3e12171fbda253bb7 role type: NODEMANAGER
+
+role config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+
+role name: yarn-NODEMANAGER-0034f05ed643ec7a315f7c9033c994b0 role type: NODEMANAGER
+
+role config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+
+role name: yarn-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+
+role name: yarn-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+
+role name: yarn-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+** Service name:spark_on_yarn type: SPARK_ON_YARN displayName: spark_on_yarn
+
+Service Config: ({u'yarn_service': u'yarn'}, {})
+
+rcg name: spark_on_yarn-SPARK_YARN_HISTORY_SERVER-BASE rcg display name: History Server Default Group
+
+rcg config: {u'log_dir': u'/log/cloudera/spark'}
+rcg name: spark_on_yarn-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+
+role name: spark_on_yarn-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {}
+
+role name: spark_on_yarn-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {}
+
+role name: spar40365358-SPARK_YARN_HISTORY_SERVER-cca0183624229cf91fe6791fc role type: SPARK_YARN_HISTORY_SERVER
+
+role config: {u'log_dir': u'/log/cloudera/spark'}
+
+role name: spark_on_yarn-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {}
+
+role name: spark_on_yarn-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {}
+** Service name:hive type: HIVE displayName: hive
+
+Service Config: ({u'hive_metastore_database_port': u'5432', u'hive_metastore_database_password': u'RJYYUyjNs0', u'zookeeper_service': u'zookeeper', u'hive_metastore_database_host': u'cm-api7-mn0.westus2.cloudapp.azure.com', u'hive_metastore_database_user': u'hive', u'hive_metastore_database_name': u'metastore', u'hive_metastore_database_type': u'postgresql', u'mapreduce_yarn_service': u'yarn'}, {})
+
+rcg name: hive-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+rcg name: hive-HIVESERVER2-BASE rcg display name: HiveServer2 Default Group
+
+rcg config: {u'hive_log_dir': u'/log/cloudera/hive'}
+rcg name: hive-HIVEMETASTORE-BASE rcg display name: Hive Metastore Server Default Group
+
+rcg config: {u'hive_log_dir': u'/log/cloudera/hive'}
+rcg name: hive-WEBHCAT-BASE rcg display name: WebHCat Server Default Group
+
+rcg config: {u'hcatalog_log_dir': u'/log/cloudera/hcatalog'}
+
+role name: hive-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {}
+
+role name: hive-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {}
+
+role name: hive-HIVESERVER2-cca0183624229cf91fe6791fce5e0926 role type: HIVESERVER2
+
+role config: {u'hive_log_dir': u'/log/cloudera/hive'}
+
+role name: hive-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {}
+
+role name: hive-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {}
+
+role name: hive-HIVEMETASTORE-cca0183624229cf91fe6791fce5e0926 role type: HIVEMETASTORE
+
+role config: {u'hive_log_dir': u'/log/cloudera/hive'}
+** Service name:nifitoolkitca type: NIFITOOLKITCA displayName: nifitoolkitca
+
+Service Config: ({u'nifi.toolkit.tls.ca.server.token': u'ClouderaNifi_123'}, {})
+
+rcg name: nifitoolkitca-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+rcg name: nifitoolkitca-NIFI_TOOLKIT_SERVER-BASE rcg display name: NiFi Toolkit Default Group
+
+rcg config: {}
+
+role name: NiFi_Toolkit_role_name role type: NIFI_TOOLKIT_SERVER
+
+role config: {}
+** Service name:hdfs type: HDFS displayName: hdfs
+
+Service Config: ({u'dfs_block_local_path_access_user': u'impala,hbase,mapred,spark', u'zookeeper_service': u'zookeeper', u'dfs_replication': u'3'}, {})
+
+rcg name: hdfs-NAMENODE-BASE rcg display name: NameNode Default Group
+
+rcg config: {u'dfs_name_dir_list': u',/data/dfs/nn', u'dfs_namenode_servicerpc_address': u'8022', u'dfs_namenode_handler_count': u'70', u'dfs_namenode_service_handler_count': u'70', u'namenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'namenode_java_heapsize': u'1677058304'}
+rcg name: hdfs-FAILOVERCONTROLLER-BASE rcg display name: Failover Controller Default Group
+
+rcg config: {u'failover_controller_log_dir': u'/log/cloudera/hadoop-hdfs'}
+rcg name: hdfs-SECONDARYNAMENODE-BASE rcg display name: SecondaryNameNode Default Group
+
+rcg config: {u'secondary_namenode_java_heapsize': u'1677058304', u'secondarynamenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'fs_checkpoint_dir_list': u',/data/dfs/snn'}
+rcg name: hdfs-DATANODE-BASE rcg display name: DataNode Default Group
+
+rcg config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+rcg name: hdfs-BALANCER-BASE rcg display name: Balancer Default Group
+
+rcg config: {}
+rcg name: hdfs-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {u'dfs_client_use_trash': u'true'}
+rcg name: hdfs-JOURNALNODE-BASE rcg display name: JournalNode Default Group
+
+rcg config: {}
+rcg name: hdfs-HTTPFS-BASE rcg display name: HttpFS Default Group
+
+rcg config: {u'httpfs_log_dir': u'/log/cloudera/hadoop-httpfs'}
+rcg name: hdfs-NFSGATEWAY-BASE rcg display name: NFS Gateway Default Group
+
+rcg config: {}
+
+role name: hdfs-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-NAMENODE-cca0183624229cf91fe6791fce5e0926 role type: NAMENODE
+
+role config: {u'dfs_name_dir_list': u',/data/dfs/nn', u'dfs_namenode_servicerpc_address': u'8022', u'dfs_namenode_handler_count': u'70', u'dfs_namenode_service_handler_count': u'70', u'namenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'namenode_java_heapsize': u'1677058304'}
+
+role name: hdfs-DATANODE-9cc4ea206a45054739fb00d7993ff4f8 role type: DATANODE
+
+role config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+
+role name: hdfs-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-DATANODE-0034f05ed643ec7a315f7c9033c994b0 role type: DATANODE
+
+role config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+
+role name: hdfs-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-SECONDARYNAMENODE-cca0183624229cf91fe6791fce5e0926 role type: SECONDARYNAMENODE
+
+role config: {u'secondary_namenode_java_heapsize': u'1677058304', u'secondarynamenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'fs_checkpoint_dir_list': u',/data/dfs/snn'}
+
+role name: hdfs-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-DATANODE-5cee0558afe5fda3e12171fbda253bb7 role type: DATANODE
+
+role config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+** Service name:solr type: SOLR displayName: Solr
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'hdfs_service': u'hdfs'}, {})
+
+rcg name: solr-SOLR_SERVER-BASE rcg display name: Solr Server Default Group
+
+rcg config: {u'solr_java_direct_memory_size': u'268435456', u'solr_java_heapsize': u'209715200'}
+rcg name: solr-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+
+role name: solr-SOLR_SERVER-f2bf8845d39c89484278b4c09d1d93d7 role type: SOLR_SERVER
+
+role config: {u'solr_java_direct_memory_size': u'268435456', u'solr_java_heapsize': u'209715200'}
+** Service name:zookeeper type: ZOOKEEPER displayName: zookeeper
+
+Service Config: ({u'zookeeper_datadir_autocreate': u'true'}, {})
+
+rcg name: zookeeper-SERVER-BASE rcg display name: Server Default Group
+
+rcg config: {u'dataLogDir': u'/log/cloudera/zookeeper', u'dataDir': u'/log/cloudera/zookeeper', u'maxClientCnxns': u'1024', u'zk_server_log_dir': u'/log/cloudera/zookeeper'}
+
+role name: zookeeper-SERVER-cca0183624229cf91fe6791fce5e0926 role type: SERVER
+
+role config: {u'dataLogDir': u'/log/cloudera/zookeeper', u'dataDir': u'/log/cloudera/zookeeper', u'maxClientCnxns': u'1024', u'serverId': u'1', u'zk_server_log_dir': u'/log/cloudera/zookeeper'}
+** Service name:KUDU-1 type: KUDU displayName: KUDU-1
+
+Service Config: ({}, {})
+
+rcg name: KUDU-1-KUDU_TSERVER-BASE rcg display name: Tablet Server Default Group
+
+rcg config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+rcg name: KUDU-1-KUDU_MASTER-BASE rcg display name: Master Default Group
+
+rcg config: {u'fs_wal_dir': u'/data/master', u'fs_data_dirs': u'/data/master'}
+
+role name: KUDU_TSERVER_0 role type: KUDU_TSERVER
+
+role config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+
+role name: KUDU_TSERVER_2 role type: KUDU_TSERVER
+
+role config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+
+role name: KUDU_TSERVER_1 role type: KUDU_TSERVER
+
+role config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+
+role name: KUDU_MASTER_0 role type: KUDU_MASTER
+
+role config: {u'fs_wal_dir': u'/data/master', u'fs_data_dirs': u'/data/master'}
+* After adding create_solr
+** Service name:oozie type: OOZIE displayName: oozie
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'hive_service': u'hive', u'mapreduce_yarn_service': u'yarn'}, {})
+
+rcg name: oozie-OOZIE_SERVER-BASE rcg display name: Oozie Server Default Group
+
+rcg config: {u'oozie_log_dir': u'/log/cloudera/oozie', u'oozie_data_dir': u'/log/cloudera/lib/oozie/data'}
+
+role name: oozie-OOZIE_SERVER-cca0183624229cf91fe6791fce5e0926 role type: OOZIE_SERVER
+
+role config: {u'oozie_log_dir': u'/log/cloudera/oozie', u'oozie_data_dir': u'/log/cloudera/lib/oozie/data'}
+** Service name:impala type: IMPALA displayName: impala
+
+Service Config: ({u'impala_cmd_args_safety_valve': u'-scratch_dirs=/data0/impala/scratch,/data1/impala/scratch,/data2/impala/scratch,/data3/impala/scratch,/data4/impala/scratch', u'hdfs_service': u'hdfs', u'hive_service': u'hive', u'kudu_service': u'KUDU-1'}, {})
+
+rcg name: impala-LLAMA-BASE rcg display name: Impala Llama ApplicationMaster Default Group
+
+rcg config: {}
+rcg name: impala-IMPALAD-BASE rcg display name: Impala Daemon Default Group
+
+rcg config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+rcg name: impala-CATALOGSERVER-BASE rcg display name: Impala Catalog Server Default Group
+
+rcg config: {u'log_dir': u'/log/cloudera/catalogd'}
+rcg name: impala-STATESTORE-BASE rcg display name: Impala StateStore Default Group
+
+rcg config: {u'log_dir': u'/log/cloudera/statestore'}
+
+role name: impala-IMPALAD-9cc4ea206a45054739fb00d7993ff4f8 role type: IMPALAD
+
+role config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+
+role name: impala-STATESTORE-cca0183624229cf91fe6791fce5e0926 role type: STATESTORE
+
+role config: {u'log_dir': u'/log/cloudera/statestore'}
+
+role name: impala-IMPALAD-0034f05ed643ec7a315f7c9033c994b0 role type: IMPALAD
+
+role config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+
+role name: impala-IMPALAD-5cee0558afe5fda3e12171fbda253bb7 role type: IMPALAD
+
+role config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+
+role name: impala-CATALOGSERVER-cca0183624229cf91fe6791fce5e0926 role type: CATALOGSERVER
+
+role config: {u'log_dir': u'/log/cloudera/catalogd'}
+** Service name:hue type: HUE displayName: hue
+
+Service Config: ({u'hue_webhdfs': u'hdfs-NAMENODE-cca0183624229cf91fe6791fce5e0926', u'impala_service': u'impala', u'zookeeper_service': u'zookeeper', u'hive_service': u'hive', u'oozie_service': u'oozie'}, {})
+
+rcg name: hue-HUE_SERVER-BASE rcg display name: Hue Server Default Group
+
+rcg config: {u'hue_server_log_dir': u'/log/cloudera/hue'}
+rcg name: hue-KT_RENEWER-BASE rcg display name: Kerberos Ticket Renewer Default Group
+
+rcg config: {u'kt_renewer_log_dir': u'/log/cloudera/hue'}
+rcg name: hue-HUE_LOAD_BALANCER-BASE rcg display name: Load Balancer Default Group
+
+rcg config: {}
+
+role name: hue-HUE_SERVER-cca0183624229cf91fe6791fce5e0926 role type: HUE_SERVER
+
+role config: {u'hue_server_log_dir': u'/log/cloudera/hue', u'secret_key': u'DJPgoTtCbaTopcwLDv79RlV5321RTH'}
+** Service name:nifiregistry type: NIFIREGISTRY displayName: nifiregistry
+
+Service Config: ({u'nifitoolkitca_service': u'nifitoolkitca'}, {})
+
+rcg name: nifiregistry-NIFI_REGISTRY_SERVER-BASE rcg display name: NiFi Registry Default Group
+
+rcg config: {}
+
+role name: nifiregistry role type: NIFI_REGISTRY_SERVER
+
+role config: {}
+** Service name:nifi type: NIFI displayName: nifi
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'nifitoolkitca_service': u'nifitoolkitca'}, {})
+
+rcg name: nifi-NIFI_NODE-BASE rcg display name: NiFi Node Default Group
+
+rcg config: {}
+
+role name: nifi role type: NIFI_NODE
+
+role config: {}
+** Service name:yarn type: YARN displayName: yarn
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'hdfs_service': u'hdfs'}, {})
+
+rcg name: yarn-RESOURCEMANAGER-BASE rcg display name: ResourceManager Default Group
+
+rcg config: {u'resource_manager_java_heapsize': u'2000000000', u'resource_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_scheduler_maximum_allocation_mb': u'2568', u'yarn_scheduler_maximum_allocation_vcores': u'2'}
+rcg name: yarn-NODEMANAGER-BASE rcg display name: NodeManager Default Group
+
+rcg config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+rcg name: yarn-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {u'mapred_submit_replication': u'3'}
+rcg name: yarn-JOBHISTORY-BASE rcg display name: JobHistory Server Default Group
+
+rcg config: {u'mr2_jobhistory_java_heapsize': u'1000000000', u'mr2_jobhistory_log_dir': u'/log/cloudera/hadoop-mapreduce'}
+
+role name: yarn-NODEMANAGER-9cc4ea206a45054739fb00d7993ff4f8 role type: NODEMANAGER
+
+role config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+
+role name: yarn-JOBHISTORY-cca0183624229cf91fe6791fce5e0926 role type: JOBHISTORY
+
+role config: {u'mr2_jobhistory_java_heapsize': u'1000000000', u'mr2_jobhistory_log_dir': u'/log/cloudera/hadoop-mapreduce'}
+
+role name: yarn-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+
+role name: yarn-RESOURCEMANAGER-cca0183624229cf91fe6791fce5e0926 role type: RESOURCEMANAGER
+
+role config: {u'resource_manager_java_heapsize': u'2000000000', u'resource_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_scheduler_maximum_allocation_mb': u'2568', u'yarn_scheduler_maximum_allocation_vcores': u'2'}
+
+role name: yarn-NODEMANAGER-5cee0558afe5fda3e12171fbda253bb7 role type: NODEMANAGER
+
+role config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+
+role name: yarn-NODEMANAGER-0034f05ed643ec7a315f7c9033c994b0 role type: NODEMANAGER
+
+role config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+
+role name: yarn-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+
+role name: yarn-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+
+role name: yarn-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+** Service name:spark_on_yarn type: SPARK_ON_YARN displayName: spark_on_yarn
+
+Service Config: ({u'yarn_service': u'yarn'}, {})
+
+rcg name: spark_on_yarn-SPARK_YARN_HISTORY_SERVER-BASE rcg display name: History Server Default Group
+
+rcg config: {u'log_dir': u'/log/cloudera/spark'}
+rcg name: spark_on_yarn-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+
+role name: spark_on_yarn-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {}
+
+role name: spark_on_yarn-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {}
+
+role name: spar40365358-SPARK_YARN_HISTORY_SERVER-cca0183624229cf91fe6791fc role type: SPARK_YARN_HISTORY_SERVER
+
+role config: {u'log_dir': u'/log/cloudera/spark'}
+
+role name: spark_on_yarn-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {}
+
+role name: spark_on_yarn-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {}
+** Service name:hive type: HIVE displayName: hive
+
+Service Config: ({u'hive_metastore_database_port': u'5432', u'hive_metastore_database_password': u'RJYYUyjNs0', u'zookeeper_service': u'zookeeper', u'hive_metastore_database_host': u'cm-api7-mn0.westus2.cloudapp.azure.com', u'hive_metastore_database_user': u'hive', u'hive_metastore_database_name': u'metastore', u'hive_metastore_database_type': u'postgresql', u'mapreduce_yarn_service': u'yarn'}, {})
+
+rcg name: hive-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+rcg name: hive-HIVESERVER2-BASE rcg display name: HiveServer2 Default Group
+
+rcg config: {u'hive_log_dir': u'/log/cloudera/hive'}
+rcg name: hive-HIVEMETASTORE-BASE rcg display name: Hive Metastore Server Default Group
+
+rcg config: {u'hive_log_dir': u'/log/cloudera/hive'}
+rcg name: hive-WEBHCAT-BASE rcg display name: WebHCat Server Default Group
+
+rcg config: {u'hcatalog_log_dir': u'/log/cloudera/hcatalog'}
+
+role name: hive-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {}
+
+role name: hive-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {}
+
+role name: hive-HIVESERVER2-cca0183624229cf91fe6791fce5e0926 role type: HIVESERVER2
+
+role config: {u'hive_log_dir': u'/log/cloudera/hive'}
+
+role name: hive-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {}
+
+role name: hive-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {}
+
+role name: hive-HIVEMETASTORE-cca0183624229cf91fe6791fce5e0926 role type: HIVEMETASTORE
+
+role config: {u'hive_log_dir': u'/log/cloudera/hive'}
+** Service name:nifitoolkitca type: NIFITOOLKITCA displayName: nifitoolkitca
+
+Service Config: ({u'nifi.toolkit.tls.ca.server.token': u'ClouderaNifi_123'}, {})
+
+rcg name: nifitoolkitca-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+rcg name: nifitoolkitca-NIFI_TOOLKIT_SERVER-BASE rcg display name: NiFi Toolkit Default Group
+
+rcg config: {}
+
+role name: NiFi_Toolkit_role_name role type: NIFI_TOOLKIT_SERVER
+
+role config: {}
+** Service name:hdfs type: HDFS displayName: hdfs
+
+Service Config: ({u'dfs_block_local_path_access_user': u'impala,hbase,mapred,spark', u'zookeeper_service': u'zookeeper', u'dfs_replication': u'3'}, {})
+
+rcg name: hdfs-NAMENODE-BASE rcg display name: NameNode Default Group
+
+rcg config: {u'dfs_name_dir_list': u',/data/dfs/nn', u'dfs_namenode_servicerpc_address': u'8022', u'dfs_namenode_handler_count': u'70', u'dfs_namenode_service_handler_count': u'70', u'namenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'namenode_java_heapsize': u'1677058304'}
+rcg name: hdfs-FAILOVERCONTROLLER-BASE rcg display name: Failover Controller Default Group
+
+rcg config: {u'failover_controller_log_dir': u'/log/cloudera/hadoop-hdfs'}
+rcg name: hdfs-SECONDARYNAMENODE-BASE rcg display name: SecondaryNameNode Default Group
+
+rcg config: {u'secondary_namenode_java_heapsize': u'1677058304', u'secondarynamenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'fs_checkpoint_dir_list': u',/data/dfs/snn'}
+rcg name: hdfs-DATANODE-BASE rcg display name: DataNode Default Group
+
+rcg config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+rcg name: hdfs-BALANCER-BASE rcg display name: Balancer Default Group
+
+rcg config: {}
+rcg name: hdfs-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {u'dfs_client_use_trash': u'true'}
+rcg name: hdfs-JOURNALNODE-BASE rcg display name: JournalNode Default Group
+
+rcg config: {}
+rcg name: hdfs-HTTPFS-BASE rcg display name: HttpFS Default Group
+
+rcg config: {u'httpfs_log_dir': u'/log/cloudera/hadoop-httpfs'}
+rcg name: hdfs-NFSGATEWAY-BASE rcg display name: NFS Gateway Default Group
+
+rcg config: {}
+
+role name: hdfs-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-NAMENODE-cca0183624229cf91fe6791fce5e0926 role type: NAMENODE
+
+role config: {u'dfs_name_dir_list': u',/data/dfs/nn', u'dfs_namenode_servicerpc_address': u'8022', u'dfs_namenode_handler_count': u'70', u'dfs_namenode_service_handler_count': u'70', u'namenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'namenode_java_heapsize': u'1677058304'}
+
+role name: hdfs-DATANODE-9cc4ea206a45054739fb00d7993ff4f8 role type: DATANODE
+
+role config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+
+role name: hdfs-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-DATANODE-0034f05ed643ec7a315f7c9033c994b0 role type: DATANODE
+
+role config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+
+role name: hdfs-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-SECONDARYNAMENODE-cca0183624229cf91fe6791fce5e0926 role type: SECONDARYNAMENODE
+
+role config: {u'secondary_namenode_java_heapsize': u'1677058304', u'secondarynamenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'fs_checkpoint_dir_list': u',/data/dfs/snn'}
+
+role name: hdfs-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-DATANODE-5cee0558afe5fda3e12171fbda253bb7 role type: DATANODE
+
+role config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+** Service name:solr type: SOLR displayName: solr
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'hdfs_service': u'hdfs'}, {})
+
+rcg name: solr-SOLR_SERVER-BASE rcg display name: Solr Server Default Group
+
+rcg config: {u'solr_java_direct_memory_size': u'268435456', u'solr_java_heapsize': u'209715200'}
+rcg name: solr-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+
+role name: solr role type: SOLR_SERVER
+
+role config: {u'solr_java_direct_memory_size': u'268435456', u'solr_java_heapsize': u'209715200'}
+** Service name:zookeeper type: ZOOKEEPER displayName: zookeeper
+
+Service Config: ({u'zookeeper_datadir_autocreate': u'true'}, {})
+
+rcg name: zookeeper-SERVER-BASE rcg display name: Server Default Group
+
+rcg config: {u'dataLogDir': u'/log/cloudera/zookeeper', u'dataDir': u'/log/cloudera/zookeeper', u'maxClientCnxns': u'1024', u'zk_server_log_dir': u'/log/cloudera/zookeeper'}
+
+role name: zookeeper-SERVER-cca0183624229cf91fe6791fce5e0926 role type: SERVER
+
+role config: {u'dataLogDir': u'/log/cloudera/zookeeper', u'dataDir': u'/log/cloudera/zookeeper', u'maxClientCnxns': u'1024', u'serverId': u'1', u'zk_server_log_dir': u'/log/cloudera/zookeeper'}
+** Service name:KUDU-1 type: KUDU displayName: KUDU-1
+
+Service Config: ({}, {})
+
+rcg name: KUDU-1-KUDU_TSERVER-BASE rcg display name: Tablet Server Default Group
+
+rcg config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+rcg name: KUDU-1-KUDU_MASTER-BASE rcg display name: Master Default Group
+
+rcg config: {u'fs_wal_dir': u'/data/master', u'fs_data_dirs': u'/data/master'}
+
+role name: KUDU_TSERVER_0 role type: KUDU_TSERVER
+
+role config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+
+role name: KUDU_TSERVER_2 role type: KUDU_TSERVER
+
+role config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+
+role name: KUDU_TSERVER_1 role type: KUDU_TSERVER
+
+role config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+
+role name: KUDU_MASTER_0 role type: KUDU_MASTER
+
+role config: {u'fs_wal_dir': u'/data/master', u'fs_data_dirs': u'/data/master'}
+* After configuring Hue for Solr
+** Service name:oozie type: OOZIE displayName: oozie
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'hive_service': u'hive', u'mapreduce_yarn_service': u'yarn'}, {})
+
+rcg name: oozie-OOZIE_SERVER-BASE rcg display name: Oozie Server Default Group
+
+rcg config: {u'oozie_log_dir': u'/log/cloudera/oozie', u'oozie_data_dir': u'/log/cloudera/lib/oozie/data'}
+
+role name: oozie-OOZIE_SERVER-cca0183624229cf91fe6791fce5e0926 role type: OOZIE_SERVER
+
+role config: {u'oozie_log_dir': u'/log/cloudera/oozie', u'oozie_data_dir': u'/log/cloudera/lib/oozie/data'}
+** Service name:impala type: IMPALA displayName: impala
+
+Service Config: ({u'impala_cmd_args_safety_valve': u'-scratch_dirs=/data0/impala/scratch,/data1/impala/scratch,/data2/impala/scratch,/data3/impala/scratch,/data4/impala/scratch', u'hdfs_service': u'hdfs', u'hive_service': u'hive', u'kudu_service': u'KUDU-1'}, {})
+
+rcg name: impala-LLAMA-BASE rcg display name: Impala Llama ApplicationMaster Default Group
+
+rcg config: {}
+rcg name: impala-IMPALAD-BASE rcg display name: Impala Daemon Default Group
+
+rcg config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+rcg name: impala-CATALOGSERVER-BASE rcg display name: Impala Catalog Server Default Group
+
+rcg config: {u'log_dir': u'/log/cloudera/catalogd'}
+rcg name: impala-STATESTORE-BASE rcg display name: Impala StateStore Default Group
+
+rcg config: {u'log_dir': u'/log/cloudera/statestore'}
+
+role name: impala-IMPALAD-9cc4ea206a45054739fb00d7993ff4f8 role type: IMPALAD
+
+role config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+
+role name: impala-STATESTORE-cca0183624229cf91fe6791fce5e0926 role type: STATESTORE
+
+role config: {u'log_dir': u'/log/cloudera/statestore'}
+
+role name: impala-IMPALAD-0034f05ed643ec7a315f7c9033c994b0 role type: IMPALAD
+
+role config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+
+role name: impala-IMPALAD-5cee0558afe5fda3e12171fbda253bb7 role type: IMPALAD
+
+role config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+
+role name: impala-CATALOGSERVER-cca0183624229cf91fe6791fce5e0926 role type: CATALOGSERVER
+
+role config: {u'log_dir': u'/log/cloudera/catalogd'}
+** Service name:nifiregistry type: NIFIREGISTRY displayName: nifiregistry
+
+Service Config: ({u'nifitoolkitca_service': u'nifitoolkitca'}, {})
+
+rcg name: nifiregistry-NIFI_REGISTRY_SERVER-BASE rcg display name: NiFi Registry Default Group
+
+rcg config: {}
+
+role name: nifiregistry role type: NIFI_REGISTRY_SERVER
+
+role config: {}
+** Service name:nifi type: NIFI displayName: nifi
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'nifitoolkitca_service': u'nifitoolkitca'}, {})
+
+rcg name: nifi-NIFI_NODE-BASE rcg display name: NiFi Node Default Group
+
+rcg config: {}
+
+role name: nifi role type: NIFI_NODE
+
+role config: {}
+** Service name:hue type: HUE displayName: hue
+
+Service Config: ({u'solr_service': u'solr', u'oozie_service': u'oozie', u'zookeeper_service': u'zookeeper', u'hive_service': u'hive', u'hue_webhdfs': u'hdfs-NAMENODE-cca0183624229cf91fe6791fce5e0926', u'impala_service': u'impala'}, {})
+
+rcg name: hue-HUE_SERVER-BASE rcg display name: Hue Server Default Group
+
+rcg config: {u'hue_server_log_dir': u'/log/cloudera/hue'}
+rcg name: hue-KT_RENEWER-BASE rcg display name: Kerberos Ticket Renewer Default Group
+
+rcg config: {u'kt_renewer_log_dir': u'/log/cloudera/hue'}
+rcg name: hue-HUE_LOAD_BALANCER-BASE rcg display name: Load Balancer Default Group
+
+rcg config: {}
+
+role name: hue-HUE_SERVER-cca0183624229cf91fe6791fce5e0926 role type: HUE_SERVER
+
+role config: {u'hue_server_log_dir': u'/log/cloudera/hue', u'secret_key': u'DJPgoTtCbaTopcwLDv79RlV5321RTH'}
+** Service name:yarn type: YARN displayName: yarn
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'hdfs_service': u'hdfs'}, {})
+
+rcg name: yarn-RESOURCEMANAGER-BASE rcg display name: ResourceManager Default Group
+
+rcg config: {u'resource_manager_java_heapsize': u'2000000000', u'resource_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_scheduler_maximum_allocation_mb': u'2568', u'yarn_scheduler_maximum_allocation_vcores': u'2'}
+rcg name: yarn-NODEMANAGER-BASE rcg display name: NodeManager Default Group
+
+rcg config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+rcg name: yarn-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {u'mapred_submit_replication': u'3'}
+rcg name: yarn-JOBHISTORY-BASE rcg display name: JobHistory Server Default Group
+
+rcg config: {u'mr2_jobhistory_java_heapsize': u'1000000000', u'mr2_jobhistory_log_dir': u'/log/cloudera/hadoop-mapreduce'}
+
+role name: yarn-NODEMANAGER-9cc4ea206a45054739fb00d7993ff4f8 role type: NODEMANAGER
+
+role config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+
+role name: yarn-JOBHISTORY-cca0183624229cf91fe6791fce5e0926 role type: JOBHISTORY
+
+role config: {u'mr2_jobhistory_java_heapsize': u'1000000000', u'mr2_jobhistory_log_dir': u'/log/cloudera/hadoop-mapreduce'}
+
+role name: yarn-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+
+role name: yarn-RESOURCEMANAGER-cca0183624229cf91fe6791fce5e0926 role type: RESOURCEMANAGER
+
+role config: {u'resource_manager_java_heapsize': u'2000000000', u'resource_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_scheduler_maximum_allocation_mb': u'2568', u'yarn_scheduler_maximum_allocation_vcores': u'2'}
+
+role name: yarn-NODEMANAGER-5cee0558afe5fda3e12171fbda253bb7 role type: NODEMANAGER
+
+role config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+
+role name: yarn-NODEMANAGER-0034f05ed643ec7a315f7c9033c994b0 role type: NODEMANAGER
+
+role config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+
+role name: yarn-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+
+role name: yarn-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+
+role name: yarn-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+** Service name:spark_on_yarn type: SPARK_ON_YARN displayName: spark_on_yarn
+
+Service Config: ({u'yarn_service': u'yarn'}, {})
+
+rcg name: spark_on_yarn-SPARK_YARN_HISTORY_SERVER-BASE rcg display name: History Server Default Group
+
+rcg config: {u'log_dir': u'/log/cloudera/spark'}
+rcg name: spark_on_yarn-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+
+role name: spark_on_yarn-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {}
+
+role name: spark_on_yarn-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {}
+
+role name: spar40365358-SPARK_YARN_HISTORY_SERVER-cca0183624229cf91fe6791fc role type: SPARK_YARN_HISTORY_SERVER
+
+role config: {u'log_dir': u'/log/cloudera/spark'}
+
+role name: spark_on_yarn-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {}
+
+role name: spark_on_yarn-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {}
+** Service name:hive type: HIVE displayName: hive
+
+Service Config: ({u'hive_metastore_database_port': u'5432', u'hive_metastore_database_password': u'RJYYUyjNs0', u'zookeeper_service': u'zookeeper', u'hive_metastore_database_host': u'cm-api7-mn0.westus2.cloudapp.azure.com', u'hive_metastore_database_user': u'hive', u'hive_metastore_database_name': u'metastore', u'hive_metastore_database_type': u'postgresql', u'mapreduce_yarn_service': u'yarn'}, {})
+
+rcg name: hive-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+rcg name: hive-HIVESERVER2-BASE rcg display name: HiveServer2 Default Group
+
+rcg config: {u'hive_log_dir': u'/log/cloudera/hive'}
+rcg name: hive-HIVEMETASTORE-BASE rcg display name: Hive Metastore Server Default Group
+
+rcg config: {u'hive_log_dir': u'/log/cloudera/hive'}
+rcg name: hive-WEBHCAT-BASE rcg display name: WebHCat Server Default Group
+
+rcg config: {u'hcatalog_log_dir': u'/log/cloudera/hcatalog'}
+
+role name: hive-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {}
+
+role name: hive-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {}
+
+role name: hive-HIVESERVER2-cca0183624229cf91fe6791fce5e0926 role type: HIVESERVER2
+
+role config: {u'hive_log_dir': u'/log/cloudera/hive'}
+
+role name: hive-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {}
+
+role name: hive-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {}
+
+role name: hive-HIVEMETASTORE-cca0183624229cf91fe6791fce5e0926 role type: HIVEMETASTORE
+
+role config: {u'hive_log_dir': u'/log/cloudera/hive'}
+** Service name:nifitoolkitca type: NIFITOOLKITCA displayName: nifitoolkitca
+
+Service Config: ({u'nifi.toolkit.tls.ca.server.token': u'ClouderaNifi_123'}, {})
+
+rcg name: nifitoolkitca-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+rcg name: nifitoolkitca-NIFI_TOOLKIT_SERVER-BASE rcg display name: NiFi Toolkit Default Group
+
+rcg config: {}
+
+role name: NiFi_Toolkit_role_name role type: NIFI_TOOLKIT_SERVER
+
+role config: {}
+** Service name:hdfs type: HDFS displayName: hdfs
+
+Service Config: ({u'dfs_block_local_path_access_user': u'impala,hbase,mapred,spark', u'zookeeper_service': u'zookeeper', u'dfs_replication': u'3'}, {})
+
+rcg name: hdfs-NAMENODE-BASE rcg display name: NameNode Default Group
+
+rcg config: {u'dfs_name_dir_list': u',/data/dfs/nn', u'dfs_namenode_servicerpc_address': u'8022', u'dfs_namenode_handler_count': u'70', u'dfs_namenode_service_handler_count': u'70', u'namenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'namenode_java_heapsize': u'1677058304'}
+rcg name: hdfs-FAILOVERCONTROLLER-BASE rcg display name: Failover Controller Default Group
+
+rcg config: {u'failover_controller_log_dir': u'/log/cloudera/hadoop-hdfs'}
+rcg name: hdfs-SECONDARYNAMENODE-BASE rcg display name: SecondaryNameNode Default Group
+
+rcg config: {u'secondary_namenode_java_heapsize': u'1677058304', u'secondarynamenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'fs_checkpoint_dir_list': u',/data/dfs/snn'}
+rcg name: hdfs-DATANODE-BASE rcg display name: DataNode Default Group
+
+rcg config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+rcg name: hdfs-BALANCER-BASE rcg display name: Balancer Default Group
+
+rcg config: {}
+rcg name: hdfs-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {u'dfs_client_use_trash': u'true'}
+rcg name: hdfs-JOURNALNODE-BASE rcg display name: JournalNode Default Group
+
+rcg config: {}
+rcg name: hdfs-HTTPFS-BASE rcg display name: HttpFS Default Group
+
+rcg config: {u'httpfs_log_dir': u'/log/cloudera/hadoop-httpfs'}
+rcg name: hdfs-NFSGATEWAY-BASE rcg display name: NFS Gateway Default Group
+
+rcg config: {}
+
+role name: hdfs-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-NAMENODE-cca0183624229cf91fe6791fce5e0926 role type: NAMENODE
+
+role config: {u'dfs_name_dir_list': u',/data/dfs/nn', u'dfs_namenode_servicerpc_address': u'8022', u'dfs_namenode_handler_count': u'70', u'dfs_namenode_service_handler_count': u'70', u'namenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'namenode_java_heapsize': u'1677058304'}
+
+role name: hdfs-DATANODE-9cc4ea206a45054739fb00d7993ff4f8 role type: DATANODE
+
+role config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+
+role name: hdfs-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-DATANODE-0034f05ed643ec7a315f7c9033c994b0 role type: DATANODE
+
+role config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+
+role name: hdfs-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-SECONDARYNAMENODE-cca0183624229cf91fe6791fce5e0926 role type: SECONDARYNAMENODE
+
+role config: {u'secondary_namenode_java_heapsize': u'1677058304', u'secondarynamenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'fs_checkpoint_dir_list': u',/data/dfs/snn'}
+
+role name: hdfs-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-DATANODE-5cee0558afe5fda3e12171fbda253bb7 role type: DATANODE
+
+role config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+** Service name:solr type: SOLR displayName: solr
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'hdfs_service': u'hdfs'}, {})
+
+rcg name: solr-SOLR_SERVER-BASE rcg display name: Solr Server Default Group
+
+rcg config: {u'solr_java_direct_memory_size': u'268435456', u'solr_java_heapsize': u'209715200'}
+rcg name: solr-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+
+role name: solr role type: SOLR_SERVER
+
+role config: {u'solr_java_direct_memory_size': u'268435456', u'solr_java_heapsize': u'209715200'}
+** Service name:zookeeper type: ZOOKEEPER displayName: zookeeper
+
+Service Config: ({u'zookeeper_datadir_autocreate': u'true'}, {})
+
+rcg name: zookeeper-SERVER-BASE rcg display name: Server Default Group
+
+rcg config: {u'dataLogDir': u'/log/cloudera/zookeeper', u'dataDir': u'/log/cloudera/zookeeper', u'maxClientCnxns': u'1024', u'zk_server_log_dir': u'/log/cloudera/zookeeper'}
+
+role name: zookeeper-SERVER-cca0183624229cf91fe6791fce5e0926 role type: SERVER
+
+role config: {u'dataLogDir': u'/log/cloudera/zookeeper', u'dataDir': u'/log/cloudera/zookeeper', u'maxClientCnxns': u'1024', u'serverId': u'1', u'zk_server_log_dir': u'/log/cloudera/zookeeper'}
+** Service name:KUDU-1 type: KUDU displayName: KUDU-1
+
+Service Config: ({}, {})
+
+rcg name: KUDU-1-KUDU_TSERVER-BASE rcg display name: Tablet Server Default Group
+
+rcg config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+rcg name: KUDU-1-KUDU_MASTER-BASE rcg display name: Master Default Group
+
+rcg config: {u'fs_wal_dir': u'/data/master', u'fs_data_dirs': u'/data/master'}
+
+role name: KUDU_TSERVER_0 role type: KUDU_TSERVER
+
+role config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+
+role name: KUDU_TSERVER_2 role type: KUDU_TSERVER
+
+role config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+
+role name: KUDU_TSERVER_1 role type: KUDU_TSERVER
+
+role config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+
+role name: KUDU_MASTER_0 role type: KUDU_MASTER
+
+role config: {u'fs_wal_dir': u'/data/master', u'fs_data_dirs': u'/data/master'}
+* After running configure_hue_for_solr
+** Service name:oozie type: OOZIE displayName: oozie
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'hive_service': u'hive', u'mapreduce_yarn_service': u'yarn'}, {})
+
+rcg name: oozie-OOZIE_SERVER-BASE rcg display name: Oozie Server Default Group
+
+rcg config: {u'oozie_log_dir': u'/log/cloudera/oozie', u'oozie_data_dir': u'/log/cloudera/lib/oozie/data'}
+
+role name: oozie-OOZIE_SERVER-cca0183624229cf91fe6791fce5e0926 role type: OOZIE_SERVER
+
+role config: {u'oozie_log_dir': u'/log/cloudera/oozie', u'oozie_data_dir': u'/log/cloudera/lib/oozie/data'}
+** Service name:impala type: IMPALA displayName: impala
+
+Service Config: ({u'impala_cmd_args_safety_valve': u'-scratch_dirs=/data0/impala/scratch,/data1/impala/scratch,/data2/impala/scratch,/data3/impala/scratch,/data4/impala/scratch', u'hdfs_service': u'hdfs', u'hive_service': u'hive', u'kudu_service': u'KUDU-1'}, {})
+
+rcg name: impala-LLAMA-BASE rcg display name: Impala Llama ApplicationMaster Default Group
+
+rcg config: {}
+rcg name: impala-IMPALAD-BASE rcg display name: Impala Daemon Default Group
+
+rcg config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+rcg name: impala-CATALOGSERVER-BASE rcg display name: Impala Catalog Server Default Group
+
+rcg config: {u'log_dir': u'/log/cloudera/catalogd'}
+rcg name: impala-STATESTORE-BASE rcg display name: Impala StateStore Default Group
+
+rcg config: {u'log_dir': u'/log/cloudera/statestore'}
+
+role name: impala-IMPALAD-9cc4ea206a45054739fb00d7993ff4f8 role type: IMPALAD
+
+role config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+
+role name: impala-STATESTORE-cca0183624229cf91fe6791fce5e0926 role type: STATESTORE
+
+role config: {u'log_dir': u'/log/cloudera/statestore'}
+
+role name: impala-IMPALAD-0034f05ed643ec7a315f7c9033c994b0 role type: IMPALAD
+
+role config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+
+role name: impala-IMPALAD-5cee0558afe5fda3e12171fbda253bb7 role type: IMPALAD
+
+role config: {u'impalad_memory_limit': u'21500000000', u'log_dir': u'/log/cloudera/impalad'}
+
+role name: impala-CATALOGSERVER-cca0183624229cf91fe6791fce5e0926 role type: CATALOGSERVER
+
+role config: {u'log_dir': u'/log/cloudera/catalogd'}
+** Service name:hue type: HUE displayName: hue
+
+Service Config: ({u'solr_service': u'solr', u'oozie_service': u'oozie', u'zookeeper_service': u'zookeeper', u'hive_service': u'hive', u'hue_webhdfs': u'hdfs-NAMENODE-cca0183624229cf91fe6791fce5e0926', u'impala_service': u'impala'}, {})
+
+rcg name: hue-HUE_SERVER-BASE rcg display name: Hue Server Default Group
+
+rcg config: {u'hue_server_log_dir': u'/log/cloudera/hue'}
+rcg name: hue-KT_RENEWER-BASE rcg display name: Kerberos Ticket Renewer Default Group
+
+rcg config: {u'kt_renewer_log_dir': u'/log/cloudera/hue'}
+rcg name: hue-HUE_LOAD_BALANCER-BASE rcg display name: Load Balancer Default Group
+
+rcg config: {}
+
+role name: hue-HUE_SERVER-cca0183624229cf91fe6791fce5e0926 role type: HUE_SERVER
+
+role config: {u'hue_server_log_dir': u'/log/cloudera/hue', u'secret_key': u'DJPgoTtCbaTopcwLDv79RlV5321RTH'}
+** Service name:solr type: SOLR displayName: solr
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'hdfs_service': u'hdfs'}, {})
+
+rcg name: solr-SOLR_SERVER-BASE rcg display name: Solr Server Default Group
+
+rcg config: {u'solr_java_direct_memory_size': u'268435456', u'solr_java_heapsize': u'209715200'}
+rcg name: solr-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+
+role name: solr role type: SOLR_SERVER
+
+role config: {u'solr_java_direct_memory_size': u'268435456', u'solr_java_heapsize': u'209715200'}
+** Service name:yarn type: YARN displayName: yarn
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'hdfs_service': u'hdfs'}, {})
+
+rcg name: yarn-RESOURCEMANAGER-BASE rcg display name: ResourceManager Default Group
+
+rcg config: {u'resource_manager_java_heapsize': u'2000000000', u'resource_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_scheduler_maximum_allocation_mb': u'2568', u'yarn_scheduler_maximum_allocation_vcores': u'2'}
+rcg name: yarn-NODEMANAGER-BASE rcg display name: NodeManager Default Group
+
+rcg config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+rcg name: yarn-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {u'mapred_submit_replication': u'3'}
+rcg name: yarn-JOBHISTORY-BASE rcg display name: JobHistory Server Default Group
+
+rcg config: {u'mr2_jobhistory_java_heapsize': u'1000000000', u'mr2_jobhistory_log_dir': u'/log/cloudera/hadoop-mapreduce'}
+
+role name: yarn-NODEMANAGER-9cc4ea206a45054739fb00d7993ff4f8 role type: NODEMANAGER
+
+role config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+
+role name: yarn-JOBHISTORY-cca0183624229cf91fe6791fce5e0926 role type: JOBHISTORY
+
+role config: {u'mr2_jobhistory_java_heapsize': u'1000000000', u'mr2_jobhistory_log_dir': u'/log/cloudera/hadoop-mapreduce'}
+
+role name: yarn-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+
+role name: yarn-RESOURCEMANAGER-cca0183624229cf91fe6791fce5e0926 role type: RESOURCEMANAGER
+
+role config: {u'resource_manager_java_heapsize': u'2000000000', u'resource_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_scheduler_maximum_allocation_mb': u'2568', u'yarn_scheduler_maximum_allocation_vcores': u'2'}
+
+role name: yarn-NODEMANAGER-5cee0558afe5fda3e12171fbda253bb7 role type: NODEMANAGER
+
+role config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+
+role name: yarn-NODEMANAGER-0034f05ed643ec7a315f7c9033c994b0 role type: NODEMANAGER
+
+role config: {u'yarn_nodemanager_resource_memory_mb': u'20028', u'yarn_nodemanager_heartbeat_interval_ms': u'100', u'node_manager_log_dir': u'/log/cloudera/hadoop-yarn', u'yarn_nodemanager_local_dirs': u',/data0/yarn/nm,/data1/yarn/nm,/data2/yarn/nm,/data3/yarn/nm,/data4/yarn/nm', u'yarn_nodemanager_resource_cpu_vcores': u'5', u'yarn_nodemanager_log_dirs': u'/log/cloudera/hadoop-yarn/container', u'node_manager_java_heapsize': u'2000000000'}
+
+role name: yarn-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+
+role name: yarn-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+
+role name: yarn-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {u'mapred_submit_replication': u'3'}
+** Service name:nifiregistry type: NIFIREGISTRY displayName: nifiregistry
+
+Service Config: ({u'nifitoolkitca_service': u'nifitoolkitca'}, {})
+
+rcg name: nifiregistry-NIFI_REGISTRY_SERVER-BASE rcg display name: NiFi Registry Default Group
+
+rcg config: {}
+
+role name: nifiregistry role type: NIFI_REGISTRY_SERVER
+
+role config: {}
+** Service name:spark_on_yarn type: SPARK_ON_YARN displayName: spark_on_yarn
+
+Service Config: ({u'yarn_service': u'yarn'}, {})
+
+rcg name: spark_on_yarn-SPARK_YARN_HISTORY_SERVER-BASE rcg display name: History Server Default Group
+
+rcg config: {u'log_dir': u'/log/cloudera/spark'}
+rcg name: spark_on_yarn-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+
+role name: spark_on_yarn-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {}
+
+role name: spark_on_yarn-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {}
+
+role name: spar40365358-SPARK_YARN_HISTORY_SERVER-cca0183624229cf91fe6791fc role type: SPARK_YARN_HISTORY_SERVER
+
+role config: {u'log_dir': u'/log/cloudera/spark'}
+
+role name: spark_on_yarn-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {}
+
+role name: spark_on_yarn-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {}
+** Service name:hive type: HIVE displayName: hive
+
+Service Config: ({u'hive_metastore_database_port': u'5432', u'hive_metastore_database_password': u'RJYYUyjNs0', u'zookeeper_service': u'zookeeper', u'hive_metastore_database_host': u'cm-api7-mn0.westus2.cloudapp.azure.com', u'hive_metastore_database_user': u'hive', u'hive_metastore_database_name': u'metastore', u'hive_metastore_database_type': u'postgresql', u'mapreduce_yarn_service': u'yarn'}, {})
+
+rcg name: hive-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+rcg name: hive-HIVESERVER2-BASE rcg display name: HiveServer2 Default Group
+
+rcg config: {u'hive_log_dir': u'/log/cloudera/hive'}
+rcg name: hive-HIVEMETASTORE-BASE rcg display name: Hive Metastore Server Default Group
+
+rcg config: {u'hive_log_dir': u'/log/cloudera/hive'}
+rcg name: hive-WEBHCAT-BASE rcg display name: WebHCat Server Default Group
+
+rcg config: {u'hcatalog_log_dir': u'/log/cloudera/hcatalog'}
+
+role name: hive-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {}
+
+role name: hive-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {}
+
+role name: hive-HIVESERVER2-cca0183624229cf91fe6791fce5e0926 role type: HIVESERVER2
+
+role config: {u'hive_log_dir': u'/log/cloudera/hive'}
+
+role name: hive-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {}
+
+role name: hive-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {}
+
+role name: hive-HIVEMETASTORE-cca0183624229cf91fe6791fce5e0926 role type: HIVEMETASTORE
+
+role config: {u'hive_log_dir': u'/log/cloudera/hive'}
+** Service name:nifi type: NIFI displayName: nifi
+
+Service Config: ({u'zookeeper_service': u'zookeeper', u'nifitoolkitca_service': u'nifitoolkitca'}, {})
+
+rcg name: nifi-NIFI_NODE-BASE rcg display name: NiFi Node Default Group
+
+rcg config: {}
+
+role name: nifi role type: NIFI_NODE
+
+role config: {}
+** Service name:nifitoolkitca type: NIFITOOLKITCA displayName: nifitoolkitca
+
+Service Config: ({u'nifi.toolkit.tls.ca.server.token': u'ClouderaNifi_123'}, {})
+
+rcg name: nifitoolkitca-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {}
+rcg name: nifitoolkitca-NIFI_TOOLKIT_SERVER-BASE rcg display name: NiFi Toolkit Default Group
+
+rcg config: {}
+
+role name: NiFi_Toolkit_role_name role type: NIFI_TOOLKIT_SERVER
+
+role config: {}
+** Service name:hdfs type: HDFS displayName: hdfs
+
+Service Config: ({u'dfs_block_local_path_access_user': u'impala,hbase,mapred,spark', u'zookeeper_service': u'zookeeper', u'dfs_replication': u'3'}, {})
+
+rcg name: hdfs-NAMENODE-BASE rcg display name: NameNode Default Group
+
+rcg config: {u'dfs_name_dir_list': u',/data/dfs/nn', u'dfs_namenode_servicerpc_address': u'8022', u'dfs_namenode_handler_count': u'70', u'dfs_namenode_service_handler_count': u'70', u'namenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'namenode_java_heapsize': u'1677058304'}
+rcg name: hdfs-FAILOVERCONTROLLER-BASE rcg display name: Failover Controller Default Group
+
+rcg config: {u'failover_controller_log_dir': u'/log/cloudera/hadoop-hdfs'}
+rcg name: hdfs-SECONDARYNAMENODE-BASE rcg display name: SecondaryNameNode Default Group
+
+rcg config: {u'secondary_namenode_java_heapsize': u'1677058304', u'secondarynamenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'fs_checkpoint_dir_list': u',/data/dfs/snn'}
+rcg name: hdfs-DATANODE-BASE rcg display name: DataNode Default Group
+
+rcg config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+rcg name: hdfs-BALANCER-BASE rcg display name: Balancer Default Group
+
+rcg config: {}
+rcg name: hdfs-GATEWAY-BASE rcg display name: Gateway Default Group
+
+rcg config: {u'dfs_client_use_trash': u'true'}
+rcg name: hdfs-JOURNALNODE-BASE rcg display name: JournalNode Default Group
+
+rcg config: {}
+rcg name: hdfs-HTTPFS-BASE rcg display name: HttpFS Default Group
+
+rcg config: {u'httpfs_log_dir': u'/log/cloudera/hadoop-httpfs'}
+rcg name: hdfs-NFSGATEWAY-BASE rcg display name: NFS Gateway Default Group
+
+rcg config: {}
+
+role name: hdfs-GATEWAY-9cc4ea206a45054739fb00d7993ff4f8 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-NAMENODE-cca0183624229cf91fe6791fce5e0926 role type: NAMENODE
+
+role config: {u'dfs_name_dir_list': u',/data/dfs/nn', u'dfs_namenode_servicerpc_address': u'8022', u'dfs_namenode_handler_count': u'70', u'dfs_namenode_service_handler_count': u'70', u'namenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'namenode_java_heapsize': u'1677058304'}
+
+role name: hdfs-DATANODE-9cc4ea206a45054739fb00d7993ff4f8 role type: DATANODE
+
+role config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+
+role name: hdfs-GATEWAY-5cee0558afe5fda3e12171fbda253bb7 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-DATANODE-0034f05ed643ec7a315f7c9033c994b0 role type: DATANODE
+
+role config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+
+role name: hdfs-GATEWAY-0034f05ed643ec7a315f7c9033c994b0 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-SECONDARYNAMENODE-cca0183624229cf91fe6791fce5e0926 role type: SECONDARYNAMENODE
+
+role config: {u'secondary_namenode_java_heapsize': u'1677058304', u'secondarynamenode_log_dir': u'/log/cloudera/hadoop-hdfs', u'fs_checkpoint_dir_list': u',/data/dfs/snn'}
+
+role name: hdfs-GATEWAY-cca0183624229cf91fe6791fce5e0926 role type: GATEWAY
+
+role config: {u'dfs_client_use_trash': u'true'}
+
+role name: hdfs-DATANODE-5cee0558afe5fda3e12171fbda253bb7 role type: DATANODE
+
+role config: {u'dfs_datanode_data_dir_perm': u'755', u'datanode_java_heapsize': u'351272960', u'datanode_log_dir': u'/log/cloudera/hadoop-hdfs', u'dfs_datanode_du_reserved': u'3508717158', u'dfs_datanode_max_locked_memory': u'1257242624', u'dfs_data_dir_list': u',/data0/dfs/dn,/data1/dfs/dn,/data2/dfs/dn,/data3/dfs/dn,/data4/dfs/dn', u'dfs_datanode_failed_volumes_tolerated': u'0'}
+** Service name:zookeeper type: ZOOKEEPER displayName: zookeeper
+
+Service Config: ({u'zookeeper_datadir_autocreate': u'true'}, {})
+
+rcg name: zookeeper-SERVER-BASE rcg display name: Server Default Group
+
+rcg config: {u'dataLogDir': u'/log/cloudera/zookeeper', u'dataDir': u'/log/cloudera/zookeeper', u'maxClientCnxns': u'1024', u'zk_server_log_dir': u'/log/cloudera/zookeeper'}
+
+role name: zookeeper-SERVER-cca0183624229cf91fe6791fce5e0926 role type: SERVER
+
+role config: {u'dataLogDir': u'/log/cloudera/zookeeper', u'dataDir': u'/log/cloudera/zookeeper', u'maxClientCnxns': u'1024', u'serverId': u'1', u'zk_server_log_dir': u'/log/cloudera/zookeeper'}
+** Service name:KUDU-1 type: KUDU displayName: KUDU-1
+
+Service Config: ({}, {})
+
+rcg name: KUDU-1-KUDU_TSERVER-BASE rcg display name: Tablet Server Default Group
+
+rcg config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+rcg name: KUDU-1-KUDU_MASTER-BASE rcg display name: Master Default Group
+
+rcg config: {u'fs_wal_dir': u'/data/master', u'fs_data_dirs': u'/data/master'}
+
+role name: KUDU_TSERVER_0 role type: KUDU_TSERVER
+
+role config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+
+role name: KUDU_TSERVER_2 role type: KUDU_TSERVER
+
+role config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+
+role name: KUDU_TSERVER_1 role type: KUDU_TSERVER
+
+role config: {u'fs_wal_dir': u'/data/tserver', u'fs_data_dirs': u'/data/tserver'}
+
+role name: KUDU_MASTER_0 role type: KUDU_MASTER
+
+role config: {u'fs_wal_dir': u'/data/master', u'fs_data_dirs': u'/data/master'}

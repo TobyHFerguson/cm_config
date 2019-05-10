@@ -13,7 +13,7 @@ PASSWORD=${3:?No password provided}
 
 HOST=$(echo ${URL#*://} | sed -n 's/\(.*\):*.*/\1/p')
 
-for p in configure_jdk.py create_kudu_1.py create_nifi.py
+for p in configure_jdk.py create_kudu_1.py create_nifi.py create_solr.py
 do
     python /${p} ${HOST} ${USER:?} ${PASSWORD:?}
 done

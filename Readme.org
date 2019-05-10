@@ -3,7 +3,7 @@ This system is meant to help configure a cluster for the EDH lab we're doing wit
 
 It is assumed a cluster has been created which needs configuring.
 
-The hostnames have the format PREFIX-dn0...... where -dn0.... can be -dn0, -dn1, -dn2, -mn0, followed by anything else.
+The hostnames have the format http://PREFIX-dn0...... where -dn0.... can be -dn0, -dn1, -dn2, -mn0, followed by anything else.
 
 There are some bash scripts in bin/ which will connect via ssh with a password
 
@@ -11,18 +11,20 @@ There is a dockerized system (I use this to avoid python conflicts). Building it
 
 * Simple use
 If you've been given the cluster, and you have the cluster prefix, the cluster's CM hostname, the username and password then you need to execute the following:
-
+- ~bin/new_cluster.sh~ ::  This will ssh into each machine on the cluster and install java 1.8 as well as some CSDS. It will ask for your password 5 times
+- a docker image (~tobyhferguson/cm_config~) :: to ensure that java has been configured throughout the cluster, and to get Kudu and NiFi properly installed. It takes about 8 mins to execute.
 #+BEGIN_SRC 
-bin/new_cluster.sh PREFIX username
-bin/configure_cluster.sh CM_URL username password
+bin/new_cluster.sh CM_URL username
 #+END_SRC
 
-=new_cluster.sh= will require you to provide a password (several times!) 
-=configure_cluster.sh= will run a docker image and configure the cluster at the given CM URL
+You can run the docker stuff directly - and this is what is easiest to do:
+#+BEGIN_SRC 
+docker --rm -i -t tobyhferguson/cm_config CM_URL username password
+#+END_SRC
 
 #+BEGIN_EXAMPLE
-bin/new_cluster.sh cm-api cloudera
-bin/configure_clouster.sh http://cm-api-mn0.ukwest.azure.com cloudera Cloudera_123
+bin/new_cluster.sh http://cl64863-mn0.eastus2.cloudapp.azure.com:7180/ cloudera
+docker --rm -i -t tobyhferguson/cm_config http://cl64863-mn0.eastus2.cloudapp.azure.com:7180/ cloudera Cloudera_123
 #+END_EXAMPLE
 
 * Build

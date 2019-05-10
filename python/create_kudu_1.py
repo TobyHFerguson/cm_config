@@ -78,7 +78,7 @@ def main(cm_host, user, password):
     add_kudu_service(cluster, service_name)
     create_kudu_roles(cluster, api.get_all_hosts())
     update_kudu_role_group_configs(cluster)
-    start(service(cluster, service_name)
+    start_service(cluster, service_name)
     update_impala_service(cluster, service_name)
     print "Waiting for cluster to restart stale services"
     cluster.restart(restart_only_stale_services=True,

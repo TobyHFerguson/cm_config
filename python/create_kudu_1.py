@@ -1,5 +1,5 @@
 import sys
-from cm_api.api_client import ApiResource
+from cm_api.api_client import (ApiResource, ApiException)
 
 
 def add_kudu_service(cluster, name):
@@ -67,22 +67,19 @@ def update_impala_service(cluster, service_name):
 def main(cm_host, user, password):
     api = ApiResource(cm_host, username=user, password=password)
     cluster = api.get_all_clusters()[0]
-    stop_service(cluster, service_name)
     try:
-        print "deleting existing %s" % service_name
-        cluster.delete_service(service_name)
-    except Exception:
-        pass
-
-    print "creating new service %s" % service_name
-    add_kudu_service(cluster, service_name)
-    create_kudu_roles(cluster, api.get_all_hosts())
-    update_kudu_role_group_configs(cluster)
-    start_service(cluster, service_name)
-    update_impala_service(cluster, service_name)
-    print "Waiting for cluster to restart stale services"
-    cluster.restart(restart_only_stale_services=True,
-                    redeploy_client_configuration=True).wait()
+        cluster.get_service(service_name)
+        print "Service %s already configured. Skipping" % service_name
+    except ApiException:
+        print "creating new service %s" % service_name
+        add_kudu_service(cluster, service_name)
+        create_kudu_roles(cluster, api.get_all_hosts())
+        update_kudu_role_group_configs(cluster)
+        start_service(cluster, service_name)
+        update_impala_service(cluster, service_name)
+        print "Waiting for cluster to restart stale services"
+        cluster.restart(restart_only_stale_services=True,
+                        redeploy_client_configuration=True).wait()
 
 
 def usage(name):

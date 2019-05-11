@@ -3,7 +3,7 @@ CM_URL=${1:?"No CM URL given"}
 AUSER=${2:?"No admin user given"}
 
 PREFIX=$(echo ${CM_URL#*://} | sed -n 's/\(.*\)-[dm]n[0-2].*/\1/p')
-DOMAIN=$(echo ${CM_URL#*://} | sed -n 's/.*-[dm]n[0-2]\.\(.*\):*.*/\1/p')
+DOMAIN=$(echo ${CM_URL#*://} | sed -n 's/.*-[dm]n[0-2]\.\([^:][^:]*\).*/\1/p')
 
 for host in mn0 dn{0..2}
 do

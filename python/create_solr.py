@@ -1,5 +1,5 @@
 import sys
-from cm_api.api_client import ApiResource
+from cm_api.api_client import (ApiResource, ApiException)
 
 
 def create_solr(api):
@@ -14,25 +14,32 @@ def create_solr(api):
     role_type = "SOLR_SERVER"
 
     try:
-        cluster.delete_service(service_name)
-    except Exception:
-        pass
+        # Code to investigate how to initialize solr
+        # svc = cluster.get_service(service_name)
+        # print "Solr commands"
+        # for c in svc.list_commands_by_name():
+        #     print c
+        # for r in svc.get_all_roles(view="full"):
+        #     for c in r.list_commands_by_name():
+        #         print c
+        print "Service %s already configured. Skipping" % service_name
+    except ApiException:
+        print "creating new service %s" % service_name
+        solr_service = cluster.create_service(service_name, service_type)
+        solr_service.__class__.displayName = service_displayName
+        solr_service.update_config({u'zookeeper_service': u'zookeeper',
+                                    u'hdfs_service': u'hdfs'})
+        rcg = solr_service.get_role_config_group(rcg_name)
+        rcg.update_config(rcg_config)
+        solr_service.update_role_config_group(rcg_name, rcg)
+        for host in api.get_all_hosts():
+            if "-dn1" in host.hostname:
+                role = solr_service.create_role(
+                    role_name, role_type, host.hostname)
 
-    solr_service = cluster.create_service(service_name, service_type)
-    solr_service.__class__.displayName = service_displayName
-    solr_service.update_config({u'zookeeper_service': u'zookeeper',
-                                u'hdfs_service': u'hdfs'})
-    rcg = solr_service.get_role_config_group(rcg_name)
-    rcg.update_config(rcg_config)
-    solr_service.update_role_config_group(rcg_name, rcg)
-    for host in api.get_all_hosts():
-        if "-dn1" in host.hostname:
-            role = solr_service.create_role(
-                role_name, role_type, host.hostname)
-
-    print "Waiting for service %s to start" % service_name
-    solr_service.start().wait()
-    print "Service %s has started" % service_name
+        print "Waiting for service %s to start" % service_name
+        solr_service.start().wait()
+        print "Service %s has started" % service_name
 
 
 def configure_hue_for_solr(api):

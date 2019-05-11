@@ -5,13 +5,18 @@ from cm_api.api_client import ApiResource
 def main(cm_host, user, password):
     api = ApiResource(cm_host, username=user, password=password)
     cm = api.get_cloudera_manager()
-    cm.update_all_hosts_config(
-        {"java_home": "/usr/java/jdk1.8.0_121-cloudera"})
-    print("restarting CM service - this will take a minute or so")
-    cm.get_service().restart().wait()
-    print("restarting cluster - this will take 2-5 minutes")
-    api.get_all_clusters()[0].restart(restart_only_stale_services=True,
-                                      redeploy_client_configuration=True).wait()
+    config = cm.get_all_hosts_config(view='full')
+    if config['java_home'].value == "/usr/java/jdk1.8.0_121-cloudera":
+        print "Java home already set - skipping"
+    else:
+        print "Updating jdk location"
+        cm.update_all_hosts_config(
+            {"java_home": "/usr/java/jdk1.8.0_121-cloudera"})
+        print("restarting CM service - this will take a minute or so")
+        cm.get_service().restart().wait()
+        print("restarting cluster - this will take 2-5 minutes")
+        api.get_all_clusters()[0].restart(restart_only_stale_services=True,
+                                          redeploy_client_configuration=True).wait()
 
 
 def usage(name):

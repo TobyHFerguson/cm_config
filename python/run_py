@@ -1,5 +1,5 @@
 # A temporary system for executing specific scripts
-URL=http://cm-api7-mn0.westus2.cloudapp.azure.com:7180/cmf/home
+URL=cl65006-mn0.eastus.cloudapp.azure.com:7180
 IMAGE=tobyhferguson/cm_config
 IMAGE=mycm
 

@@ -15,7 +15,7 @@
             "value": "Standard_DS13_v2"
         },
         "dnsNamePrefix": {
-            "value": "cm-api"
+            "value": "cm-api11"
         },
         "virtualNetworkName": {
             "value": "clouderaVnet"
@@ -27,7 +27,7 @@
             "value": "new"
         },
         "virtualNetworkRGName": {
-            "value": "toby-cm-api2"
+            "value": "toby-cm-api11"
         },
         "addressPrefixes": {
             "value": "10.10.0.0/16"

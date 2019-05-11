@@ -1,7 +1,7 @@
 # This is just a playground for experimenting with the cm api
 
 from cm_api.api_client import ApiResource
-cm_host = "cm-api5-mn0.westus2.cloudapp.azure.com"
+cm_host = "cm-api7-mn0.westus2.cloudapp.azure.com"
 user = "cloudera"
 password = "Cloudera_123"
 api = ApiResource(cm_host, username=user, password=password)
